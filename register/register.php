@@ -3,7 +3,7 @@
 
     session_start();
 
-    if (isset($_SESSION['SESSION_ID'])){
+    if (isset($_SESSION['user_id'])){
         header("Location: /Password-Manager/users/vault.php");
         exit(); 
     }
@@ -102,6 +102,19 @@
                                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                                 <div>
                                     <strong>Error!</strong> Please, use a stronger password.
+                                </div>
+                            </div>
+                        </div>
+                    ';
+                }
+                else if($_GET["error"] == "Error"){
+                    echo '
+                        <div class="register_alert_style alert alert-danger alert-dismissible" id="Alert" role="alert">
+                            <div class="d-flex align-items-center register_alert_text5">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                                <div>
+                                    <strong>Error!</strong> Something went wrong.
                                 </div>
                             </div>
                         </div>

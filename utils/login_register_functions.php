@@ -1,5 +1,53 @@
 <?php
 
+    function login($conn, $email, $password){
+        $user_exists = emailExists($conn, $email);
+
+        if($user_exists === false){
+            header("Location: /Password-Manager/login.php?error=Error");
+            exit();
+        }
+
+        $password_hashed = $user_exists["password"];
+        $salt = $user_exists["salt"];
+
+        $iterations = 100000;
+
+        // Calculate Vault Key
+        $secret = $email.$password;
+        $vault_key = calculate_vault_key($iterations, $salt, $secret);
+
+        // Calculate Authentication Key
+        $auth_secret = $vault_key.$password;
+        $auth_key = calculate_auth_key($iterations, $salt, $auth_secret);
+
+        if(verify_password($password_hashed, $auth_key) === false){
+            header("Location: /Password-Manager/login.php?error=Error");
+            exit();
+        }
+        else if(verify_password($password_hashed, $auth_key) === true){
+            session_start();
+            session_regenerate_id(true);
+
+            $_SESSION["user_id"] = $user_exists["id"];
+            $_SESSION["email"] = $user_exists["email"];
+
+            header("Location: /Password-Manager/users/vault.php");
+            exit();
+        }
+    }
+
+
+    function verify_password($password, $password1){
+        if($password === $password1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
     function emailExists($conn, $email){
         $sql = "SELECT * FROM users WHERE email = ?;";
         $stmt = mysqli_stmt_init($conn);
