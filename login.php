@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
-                            <label>Password</label>
+                            <label>Master Password</label>
                             <input type="password" class="form-control" name="password" required>
                         </div>
                     </div>

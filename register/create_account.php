@@ -17,17 +17,17 @@
         $password_confirmation = $_POST["password-confirmation"];
 
         if(emailExists($conn, $email) !== false){
-            header("Location: /Password-Manager/register/register.php?error=error");
+            header("Location: /Password-Manager/register/register.php?error=Email_Exists");
             exit();
         }
 
         if(passwordMatch($password, $password_confirmation) !== false){
-            header("Location: /Password-Manager/register/register.php?error=error");
+            header("Location: /Password-Manager/register/register.php?error=Passwords_Dont_Match");
             exit();
         }
 
         if(passwordStrength($email, $password) !== false){
-            header("Location: /Password-Manager/register/register.php?error=password_strength");
+            header("Location: /Password-Manager/register/register.php?error=Password_Strength");
             exit();
         }
 
