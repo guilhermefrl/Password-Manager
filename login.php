@@ -1,9 +1,16 @@
 <?php
-require_once "conn/conn.php";
-require_once "header/head.php";
+    require_once "header/head.php";
+
+    session_start();
+
+    if (isset($_SESSION['SESSION_ID'])){
+        header("Location: /Password-Manager/users/vault.php");
+        exit(); 
+    }
 ?>
 
 <!-- Login Page -->
+
     <body class="body_style">
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand">
@@ -11,7 +18,7 @@ require_once "header/head.php";
                 Password Manager
             </a>
             <div class="navbar_button">
-                <button class="btn btn-outline-info my-2 my-sm-0">Register</button>
+                <a href="/Password-Manager/register/register.php" class="btn btn-outline-info my-2 my-sm-0" role="button">Register</a>
             </div>
         </nav>
 
