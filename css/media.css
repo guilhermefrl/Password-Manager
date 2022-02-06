@@ -82,3 +82,41 @@
 .register_alert_text6 {
     margin-left: 20%;
 }
+
+.vault_card_style {
+    margin-top: 2%;
+    margin-left: 6%;
+}
+
+.vault_card_image {
+    margin-left: 33%;
+}
+
+.btn-circle {
+    background-color: #FF914D;
+    border-color: #FF914D;
+    height: 60px;
+    width: 60px;
+    line-height: 1.33;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 24px;
+    box-shadow: 3px 4px  rgba(0, 0, 0, 0.205);
+}
+
+.btn-circle:hover,
+.btn-circle:active,
+.btn-circle:visited,
+.btn-circle:focus,
+.btn-circle:active {
+    background-color: #fd7b2b;
+    border-color: #fd7b2b;
+}
+
+.btn-position {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    margin-right: 5%;
+    margin-bottom: 3%; 
+}
